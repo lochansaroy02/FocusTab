@@ -16,12 +16,13 @@ body {
     background-color: var(--stone-900);
     color: var(--stone-300);
     width: 300px;
-    height: 400px;
+    height: fit-content;
     margin: 0;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid var(--stone-200);
     padding: 12px;
+
 
 }
 
@@ -66,6 +67,39 @@ body {
     background-color: var(--stone-800);
     color: var(--stone-200);
 }
+
+#linkDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+#linkDiv button {
+    width: 50%;
+    margin-top: 8px;
+    background-color: var(--stone-600);
+    border: none;
+    color: var(--stone-400);
+    padding: 6px 8px 6px 8px;
+    border-radius: 12px;
+    outline: 1px solid var(--stone-800);
+}
+
+#link {
+    width: 80%;
+
+    padding: 6px 10px 6px 10px;
+    background-color: var(--stone-600);
+    color: var(--stone-200);
+    outline: none;
+    border: none;
+    font-size: small;
+    border-radius: 12px;
+}
+
 
 .bottomDiv {
     margin-top: 18px;

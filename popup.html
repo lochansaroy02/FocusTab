@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>YouTube Lock</title>
+    <title>Focus Tab</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,9 +14,13 @@
 <body>
     <h3 class="heading">Start YouTube Session</h3>
 
-    <!-- 
-    <input id="link" type="text" placeholder="Enter Link">
-    <button id="getLink">Get Link</button> -->
+
+    <div id="linkDiv">
+
+
+        <input id="link" type="text" placeholder="Enter Link">
+        <button id="getLink">Get Link</button>
+    </div>
 
     <div class="selectDivOuter">
         <div class="selectDiv">
@@ -44,6 +48,20 @@
             color: white;
             cursor: pointer;" id="stop">Stop Session</button>
             <p id="status"></p>
+        </div>
+
+        <div style="margin-top: 20px; width: 100%;">
+            <label>Time Remaining:</label>
+            <div style="display: flex; gap: 4px; flex-direction: row-reverse;">
+                <div id="time-display" style="font-weight: bold; margin-top: 5px;">00:00</div>
+
+                <div id="progress-container"
+                    style="margin-top: 10px; width: 100%; height: 10px; background-color: #eee; border-radius: 5px;">
+                    <div id="progress-bar"
+                        style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="popup.js"></script>

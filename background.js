@@ -1,37 +1,37 @@
-const YOUTUBE_URL = "https://www.youtube.com";
-
 chrome.runtime.onMessage.addListener((msg) => {
-    if (msg.action === "enforceYouTube") {
+    if (msg.action === "enforceURL") {
         enforce();
     }
 });
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    enforce();
-});
-
-chrome.tabs.onCreated.addListener((tab) => {
-    enforce();
-});
+chrome.tabs.onUpdated.addListener(() => enforce());
+chrome.tabs.onCreated.addListener(() => enforce());
 
 function enforce() {
-    chrome.storage.local.get(["active", "startTime", "duration"], (res) => {
+    chrome.storage.local.get(["active", "startTime", "duration", "url"], (res) => {
         if (!res.active) return;
 
         const now = Date.now();
-        const elapsedMinutes = (now - res.startTime) / (1000 * 60);
-        if (elapsedMinutes >= res.duration) {
+        const elapsed = (now - res.startTime) / (1000 * 60);
+        if (elapsed >= res.duration) {
             chrome.storage.local.set({ active: false });
             return;
         }
 
         chrome.tabs.query({}, (tabs) => {
             tabs.forEach((tab, idx) => {
-                if (!tab.url.startsWith(YOUTUBE_URL)) {
-                    chrome.tabs.update(tab.id, { url: YOUTUBE_URL });
+                try {
+                    const currentOrigin = new URL(tab.url).origin;
+                    const allowedOrigin = new URL(res.url).origin;
+
+                    if (currentOrigin !== allowedOrigin) {
+                        chrome.tabs.update(tab.id, { url: res.url });
+                    }
+                } catch (e) {
+                    console.error("Invalid tab.url or res.url", e);
                 }
                 if (idx > 0) {
-                    chrome.tabs.remove(tab.id); // allow only 1 tab
+                    chrome.tabs.remove(tab.id);
                 }
             });
         });
