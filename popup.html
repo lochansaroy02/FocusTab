@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>YouTube Lock</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h3 class="heading">Start YouTube Session</h3>
+
+    <!-- 
+    <input id="link" type="text" placeholder="Enter Link">
+    <button id="getLink">Get Link</button> -->
+
+    <div class="selectDivOuter">
+        <div class="selectDiv">
+            <label>Set Duration:</label>
+            <select id="duration" class="select">
+                <option value="10">10 Minutes</option>
+                <option value="20">20 Minutes</option>
+                <option value="30">30 Minutes</option>
+                <option value="45">45 Minutes</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="bottomDiv">
+        <input type="password" id="password" placeholder="Enter password" />
+
+
+        <div class="buttons">
+
+            <button style="background-color: rgb(22, 163, 22); 
+            color: white;
+            cursor: pointer;" id="start">Start Session</button>
+            <button style="background-color: rgb(180, 43, 43); 
+            color: white;
+            cursor: pointer;" id="stop">Stop Session</button>
+            <p id="status"></p>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
